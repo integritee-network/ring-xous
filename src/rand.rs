@@ -292,13 +292,7 @@ mod sysrand_chunk {
     }
 }
 
-#[cfg(all(
-    not(feature = "wasm32_unknown_unknown_js"),
-    target_arch = "wasm32",
-    target_vendor = "unknown",
-    target_os = "unknown",
-    target_env = "",
-))]
+#[cfg(not(any(target_os = "android", target_os = "linux")))]
 mod sysrand_chunk {
     use crate::error;
 
